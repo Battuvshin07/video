@@ -105,25 +105,25 @@ class CorrelationVideo(Scene):
     """
 
     def construct(self):
-        # Scene 1: Title & hook                          ~10s
+        # Scene 1: Title & hook                          ~7s
         self.scene1_title()
-        # Scene 2: What is bivariate data?               ~14s
+        # Scene 2: What is bivariate data?               ~10s
         self.scene2_two_variables()
-        # Scene 3: Types of correlation (3 plots)        ~22s
+        # Scene 3: Types of correlation (3 plots)        ~15s
         self.scene3_types_of_correlation()
-        # Scene 4: Mean point & quadrants                ~18s
+        # Scene 4: Mean point & quadrants                ~12s
         self.scene4_mean_point()
-        # Scene 5: Covariance concept & formula          ~22s
+        # Scene 5: Covariance concept & formula          ~15s
         self.scene5_covariance()
-        # Scene 6: Correlation coefficient formula       ~20s
+        # Scene 6: Correlation coefficient formula       ~13s
         self.scene6_correlation_coefficient()
-        # Scene 7: Detailed paper example A (table)      ~35s
+        # Scene 7: Detailed paper example A (table)      ~25s
         self.scene7_paper_example_A()
-        # Scene 8: Practice problem B (step by step)     ~30s
+        # Scene 8: Practice problem B (step by step)     ~22s
         self.scene8_practice_B()
-        # Scene 9: Interpreting r values                 ~14s
+        # Scene 9: Interpreting r values                 ~10s
         self.scene9_interpretation()
-        # Scene 10: Summary & closing                    ~10s
+        # Scene 10: Summary & closing                    ~8s
         self.scene10_summary()
 
     # ── helpers ──────────────────────────────────────────────
@@ -163,7 +163,7 @@ class CorrelationVideo(Scene):
         self.play(FadeIn(badge_group, shift=DOWN * 0.3), run_time=0.7)
         self.play(FadeIn(title, shift=UP * 0.3), run_time=0.8)
         self.play(Write(subtitle), run_time=1.2)
-        self.wait(1.5)
+        self.wait(2.0)
         self.clear_scene()
 
     # ── SCENE 2: Bivariate data ────────────────────────── ~14s
@@ -199,7 +199,7 @@ class CorrelationVideo(Scene):
             run_time=1.5
         )
         self.play(FadeIn(label, shift=UP * 0.2), run_time=0.7)
-        self.wait(2.0)
+        self.wait(2.5)
         self.clear_scene()
 
     # ── SCENE 3: Types of correlation ──────────────────── ~22s
@@ -263,7 +263,7 @@ class CorrelationVideo(Scene):
             ),
             run_time=2.0,
         )
-        self.wait(1.5)
+        self.wait(2.0)
         self.play(
             LaggedStart(FadeIn(note1), FadeIn(note2), FadeIn(note3),
                         lag_ratio=0.25),
@@ -323,7 +323,7 @@ class CorrelationVideo(Scene):
         self.play(
             Create(vline), Create(hline),
             FadeIn(mean_dot), Write(mean_label),
-            run_time=1.2,
+            run_time=1.0,
         )
         self.play(FadeIn(q1, q2, q3, q4), run_time=0.8)
         self.play(FadeIn(side_note), run_time=0.8)
@@ -354,14 +354,14 @@ class CorrelationVideo(Scene):
         ).next_to(formula, DOWN, buff=0.4)
 
         # Interpretation
-        card1 = make_card(width=5.5, height=1.2)
-        card1_text = mn_text("cₓᵧ > 0  →  хамт өсөх хандлагатай",
+        card1 = make_card(width=5.0, height=1.2)
+        card1_text = mn_text("cₓᵧ > 0 → X, Y хамт өсдөг",
                              size=24, color=POS_COLOR)
         card1_text.move_to(card1)
         cg1 = VGroup(card1, card1_text)
 
-        card2 = make_card(width=5.5, height=1.2)
-        card2_text = mn_text("cₓᵧ < 0  →  нэг нь өсөхөд нөгөө буурна",
+        card2 = make_card(width=5.0, height=1.2)
+        card2_text = mn_text("cₓᵧ < 0 → X өсөж Y буурдаг",
                              size=24, color=NEG_COLOR)
         card2_text.move_to(card2)
         cg2 = VGroup(card2, card2_text)
@@ -378,7 +378,7 @@ class CorrelationVideo(Scene):
         self.play(Write(formula), run_time=2.0)
         self.wait(1.0)
         self.play(FadeIn(alt, shift=UP * 0.2), run_time=0.8)
-        self.wait(0.8)
+        self.wait(1.0)
         self.play(FadeIn(cg1, shift=UP * 0.2), run_time=0.7)
         self.play(FadeIn(cg2, shift=UP * 0.2), run_time=0.7)
         self.play(Write(note), run_time=0.8)
@@ -410,12 +410,12 @@ class CorrelationVideo(Scene):
             font_size=22,
         ).shift(DOWN * 0.5)
 
-        minus_lbl = mn_text("Хүчтэй сөрөг", size=18, color=NEG_COLOR)
-        minus_lbl.next_to(scale_line.n2p(-0.85), DOWN, buff=0.35)
-        zero_lbl = mn_text("Сул", size=18, color=NEUTRAL_COLOR)
-        zero_lbl.next_to(scale_line.n2p(0), DOWN, buff=0.55)
-        plus_lbl = mn_text("Хүчтэй эерэг", size=18, color=POS_COLOR)
-        plus_lbl.next_to(scale_line.n2p(0.85), DOWN, buff=0.35)
+        minus_lbl = mn_text("Сөрөг", size=16, color=NEG_COLOR)
+        minus_lbl.next_to(scale_line.n2p(-0.75), DOWN, buff=0.45)
+        zero_lbl = mn_text("Сул", size=16, color=NEUTRAL_COLOR)
+        zero_lbl.next_to(scale_line.n2p(0), DOWN, buff=0.65)
+        plus_lbl = mn_text("Эерэг", size=16, color=POS_COLOR)
+        plus_lbl.next_to(scale_line.n2p(0.75), DOWN, buff=0.45)
 
         # Bullet points
         bullets = VGroup(
@@ -453,7 +453,7 @@ class CorrelationVideo(Scene):
 
         self.play(Write(header), run_time=0.7)
         self.play(FadeIn(problem_text), run_time=0.8)
-        self.wait(1.5)
+        self.wait(2.0)
 
         # Part 2: Show data table
         self.play(FadeOut(problem_text), run_time=0.4)
@@ -515,7 +515,7 @@ class CorrelationVideo(Scene):
             run_time=1.5,
         )
         self.play(Create(sum_line), FadeIn(sum_row), run_time=0.8)
-        self.wait(2.0)
+        self.wait(2.5)
         self.clear_scene(0.5)
 
         # Part 3: Calculations step by step
@@ -550,7 +550,7 @@ class CorrelationVideo(Scene):
         self.play(Write(header2), run_time=0.6)
         self.play(FadeIn(step1_title), run_time=0.5)
         self.play(Write(step1_calc), run_time=1.5)
-        self.wait(1.0)
+        self.wait(1.5)
         self.play(FadeIn(step2_title), run_time=0.5)
         self.play(Write(step2_calc), run_time=1.5)
         self.wait(2.0)
@@ -645,7 +645,7 @@ class CorrelationVideo(Scene):
         self.play(Write(header), run_time=0.6)
         self.play(FadeIn(problem_card), Write(problem_text), run_time=1.0)
         self.play(FadeIn(think_text), run_time=0.6)
-        self.wait(3.0)
+        self.wait(2.5)
         self.play(FadeOut(think_text), run_time=0.4)
 
         # Part 2: Show solution step by step
@@ -816,14 +816,15 @@ class CorrelationVideo(Scene):
                      size=26, color=TEXT_COLOR),
             mn_text("③ Корреляцийн коэффициент r нь хүч ба чиглэлийг хэмжинэ",
                      size=26, color=TEXT_COLOR),
-            mn_text("④ -1 ≤ r ≤ 1,  |r| ≥ 0.7 → хүчтэй",
-                     size=26, color=ACCENT),
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.25)
 
         group = VGroup(title, points).arrange(DOWN, buff=0.5)
 
         thanks = mn_text("Баярлалаа!", size=40, color=HIGHLIGHT, weight=BOLD)
-        thanks.next_to(group, DOWN, buff=0.6)
+        thanks.next_to(group, DOWN, buff=0.5)
+
+        credit = mn_text("КУ5-Баттүвшин", size=22, color=NEUTRAL_COLOR)
+        credit.to_edge(DOWN, buff=0.3)
 
         self.play(FadeIn(title, shift=UP * 0.3), run_time=0.7)
         self.play(
@@ -832,6 +833,7 @@ class CorrelationVideo(Scene):
             run_time=2.0,
         )
         self.play(FadeIn(thanks, scale=1.3), run_time=0.8)
+        self.play(FadeIn(credit), run_time=0.5)
         self.wait(2.5)
 
 
